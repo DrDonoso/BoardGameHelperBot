@@ -1,0 +1,5 @@
+.env
+__pycache__
+docs_backup/
+docs/
+qdrant-db/

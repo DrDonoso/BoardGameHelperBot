@@ -1,0 +1,21 @@
+services:
+  app:
+    image: boardgamehelperbot:latest
+    container_name: boardgamehelperbot
+    build: 
+      dockerfile: Dockerfile
+      context: .
+    volumes:
+    - ./docs/:/app/docs/
+    environment:
+      BOARD_GAME: ""
+      AZURE_OPENAI_API_KEY: ""
+      AZURE_OPENAI_ENDPOINT: ""
+      AZURE_OPENAI_MODEL: ""
+      AZURE_OPENAI_DEPLOYMENT: ""
+      AZURE_OPENAI_EMBEDDINGS_DEPLOYMENT: ""
+      AZURE_OPENAI_EMBEDDINGS_MODEL: ""
+      AZURE_OPENAI_API_VERSION: ""
+      AZURE_OPENAI_EMBEDDINGS_API_VERSION: ""
+      QDRANT_COLLECTION_NAME: ""
+      TELEGRAM_BOT_TOKEN: ""

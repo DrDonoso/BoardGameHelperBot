@@ -1,0 +1,12 @@
+bs4==0.0.2
+langchain==0.3.16
+langchain-core==0.3.32
+langchain-chroma==0.2.1
+langchain-community==0.3.16
+langchain-openai==0.3.2
+langchain-qdrant==0.2.0
+langgraph==0.2.68
+openai==1.60.2
+pypdf==5.2.0
+pysqlite3==0.5.4
+python-telegram-bot==21.10
