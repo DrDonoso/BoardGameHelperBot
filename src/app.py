@@ -58,9 +58,21 @@ def retrieve(state: State):
     return {"context": retrieved_docs}
 
 def generate(state: State):
-    docs_content = "\n\n".join(f"Source: {doc.metadata['source']}, Page: {doc.metadata['page']}\n{doc.page_content}" for doc in state["context"])
-    template = f"""You are an assistant to help solve questions about the {os.environ["BOARD_GAME"]} board game. Use the following retrieved context fragments to answer the question.
-        If you don't know the answer, simply say you don't know. Your goal is to answer the question as best as possible. Add as a response in an new line also the doc that is used and the page.
+    docs_content = "\n\n".join(f"Source: {doc.metadata['source']}, Page: {doc.metadata['page']}\n Content: {doc.page_content}" for doc in state["context"])
+    template = f"""You are an assistant to help solve questions about the {os.environ["BOARD_GAME"]} board game.
+        Use the following retrieved context fragments to answer the question.
+        If you don't know the answer, simply say you don't know.
+        Your goal is to answer the question as best as possible.
+        
+        Your response must follow this format:
+        ```
+        <your answer here>
+
+        Docs:
+        <Source1>: <Page1>
+        <Source2>: <Page2>
+        ```
+        
         Question: {{question}}
         Context: {{context}}
         Answer:"""
@@ -76,15 +88,17 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 async def question(update: Update, context: ContextTypes.DEFAULT_TYPE):
     question = update.message.text
+    logger.info(f"Received question: {question} from chat_id: {update.effective_chat.id}")
     response = graph.invoke({"question": question})
     await context.bot.send_message(chat_id=update.effective_chat.id, text=response["answer"])
 
 def build_vector_db():
-    client = QdrantClient(path="qdrant-db/")
+    database = os.environ["QDRANT_DATABASE"]
+    client = QdrantClient(path=f"databases/{database}", permission="rw")
     
     collections = client.get_collections().collections
     collection_names = [collection.name for collection in collections]
-    collection_name = os.environ["QDRANT_COLLECTION_NAME"]
+    collection_name = f"{database}_collection"
     if collection_name not in collection_names:
         client.create_collection(
             collection_name=collection_name,

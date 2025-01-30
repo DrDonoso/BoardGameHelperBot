@@ -3,3 +3,5 @@ __pycache__
 docs_backup/
 docs/
 qdrant-db/
+docker-compose.dev.yml
+backup/

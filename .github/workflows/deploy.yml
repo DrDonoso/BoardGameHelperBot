@@ -29,5 +29,5 @@ jobs:
         context: .
         push: true
         tags: |
-          ghcr.io/drdonoso/boardgamecompanionbot:${{ github.run_number }}
-          ghcr.io/drdonoso/boardgamecompanionbot:latest
+          ghcr.io/drdonoso/boardgamehelperbot:${{ github.run_number }}
+          ghcr.io/drdonoso/boardgamehelperbot:latest

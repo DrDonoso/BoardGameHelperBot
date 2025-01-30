@@ -7,6 +7,7 @@ services:
       context: .
     volumes:
     - ./docs/:/app/docs/
+    - ./databases/:/app/databases/
     environment:
       BOARD_GAME: ""
       AZURE_OPENAI_API_KEY: ""
@@ -17,5 +18,5 @@ services:
       AZURE_OPENAI_EMBEDDINGS_MODEL: ""
       AZURE_OPENAI_API_VERSION: ""
       AZURE_OPENAI_EMBEDDINGS_API_VERSION: ""
-      QDRANT_COLLECTION_NAME: ""
+      QDRANT_DATABASE: ""
       TELEGRAM_BOT_TOKEN: ""
