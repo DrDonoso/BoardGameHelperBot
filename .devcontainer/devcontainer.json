@@ -21,8 +21,10 @@
 	"customizations": {
 		"vscode": {
 		  "extensions": [
-			"vscode-icons-team.vscode-icons"
-		  ]
+			"vscode-icons-team.vscode-icons",
+			"charliermarsh.ruff",
+			"github.vscode-github-actions"
+		]
 		}
 	  }
 

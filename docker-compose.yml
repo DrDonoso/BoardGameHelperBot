@@ -7,7 +7,6 @@ services:
       context: .
     volumes:
     - ./docs/:/app/docs/
-    - ./databases/:/app/databases/
     environment:
       BOARD_GAME: ""
       AZURE_OPENAI_API_KEY: ""
