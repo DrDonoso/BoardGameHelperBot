@@ -1,6 +1,6 @@
 services:
   app:
-    image: boardgamehelperbot:latest
+    image: drdonoso/boardgamehelperbot:latest
     container_name: boardgamehelperbot
     build: 
       dockerfile: Dockerfile
