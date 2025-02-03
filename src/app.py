@@ -98,7 +98,8 @@ def generate(state: State):
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await context.bot.send_message(
-        chat_id=update.effective_chat.id, text="I'm a bot, please talk to me!"
+        chat_id=update.effective_chat.id,
+        text=f"I'm a {os.environ['BOARD_GAME']} bot! Please ask me anything from the game and I'll do my best to help you.",
     )
 
 
@@ -160,9 +161,13 @@ def generate_graph():
 def build_telegram_bot():
     application = ApplicationBuilder().token(os.environ["TELEGRAM_BOT_TOKEN"]).build()
     start_handler = CommandHandler("start", start)
-    question_handler = MessageHandler(filters.TEXT, question)
+    question_handler = MessageHandler(filters.TEXT & filters.ChatType.PRIVATE, question)
+    mention_handler = MessageHandler(
+        filters.Entity("mention") & filters.ChatType.GROUP, question
+    )
     application.add_handler(start_handler)
     application.add_handler(question_handler)
+    application.add_handler(mention_handler)
     application.run_polling()
 
 
