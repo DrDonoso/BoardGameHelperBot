@@ -2,6 +2,7 @@ services:
   app:
     image: drdonoso/boardgamehelperbot:latest
     container_name: boardgamehelperbot
+    pull_policy: always
     build: 
       dockerfile: Dockerfile
       context: .
