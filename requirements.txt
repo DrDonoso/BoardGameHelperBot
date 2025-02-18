@@ -5,7 +5,7 @@ langchain-chroma==0.2.1
 langchain-community==0.3.16
 langchain-openai==0.3.6
 langchain-qdrant==0.2.0
-langgraph==0.2.68
+langgraph==0.2.73
 openai==1.63.2
 pypdf==5.2.0
 pysqlite3==0.5.4
