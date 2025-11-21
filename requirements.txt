@@ -2,7 +2,7 @@ bs4==0.0.2
 langchain==0.3.23
 langchain-core==0.3.55
 langchain-chroma==0.2.3
-langchain-community==0.3.21
+langchain-community==0.3.27
 langchain-openai==0.3.14
 langchain-qdrant==0.2.0
 langgraph==0.3.31
